@@ -1,13 +1,6 @@
-install.packages("tidyverse")
-install.packages("rmarkdown")
-install.packages("httr")
-install.packages("shinydashboard")
-install.packages('leaflet')
-install.packages('leaflet')
-install.packages("corrplot")
-install.packages("leaps" )
-install.packages("dummies")
-install.packages("leaps")
-install.packages("forecast")
-install.packages("gains")
-install.packages("reshape")
+packages_to_be_loaded=c("tidyverse","rmarkdown","httr","shinydashboard",'leaflet',"corrplot","leaps","dummies","leaps","forecast","gains","reshape","class")
+
+lapply(packages_to_be_loaded,function(x){
+	if(x%in%installed.packages()[,1]==F){ install.packages(x)}
+	require(x,character.only = T)
+})
