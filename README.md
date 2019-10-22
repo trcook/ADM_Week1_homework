@@ -1,39 +1,18 @@
-# Specifying an R environment with a runtime.txt file
+# Binder: 
+You can use this repository with binder
+## To run the RStudio instance on binder, do one of the following:
+* Method 1: 
+	* go to mybinder.org
+	* fill out the form, pointing at the url for the git repo and launch
+	* This will eventually launch a server with a url like `hub.gke.mybinder.org/user/{USERNAME}-{REPOSITORY_NAME}-{SERVER_ID (SOME RANDOM LETTERS OR NUMBERS)}/...`, where the content between the curly braces is replaced with your username/repository/server_id. 
+	* Change this URL to: `hub.gke.mybinder.org/user/{USERNAME}-{REPOSITORY_NAME}-{SERVER_ID (SOME RANDOM LETTERS OR NUMBERS)}/rstudio`.
+* Method 2:
+	* Go to the following URL `http://mybinder.org/v2/gh/{GITHUB USER NAME}/{REPOSITORY NAME}/master?urlpath=rstudio` replacing the parts in curly braces with the appropriate information. 
 
-Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
 
-RStudio: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r/master?urlpath=rstudio)
+## Caveats
 
-RShiny: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r/master?urlpath=shiny/bus-dashboard/)
+* Keep in mind that you will not be able to directly save changes to these files across binder sessions (i.e. changes do not propogate back to github). 
+	* Instead, you can save your changes in the binder session and then export the file to your computer using the 
 
-Binder supports using R and RStudio, with libraries pinned to a specific 
-snapshot on [MRAN](https://mran.microsoft.com/documents/rro/reproducibility).
-
-You need to have a `runtime.txt` file that is formatted like:
-
-```
-r-<YYYY>-<MM>-<DD>
-```
-
-where YYYY-MM-DD is a snapshot at MRAN that will be used for installing 
-libraries. In this line, you can request a [specific 
-version of R](https://github.com/jupyter/repo2docker/pull/772#issue-313426641). To do this list the version between the 'r' 
-and the year, as in `r-3.6-2019-09-24`. Right now the default version of R is 3.6.
-
-You also need a Python notebook file such as [this one](https://github.com/binder-examples/r/blob/master/index.ipynb).
-
-You can also have an `install.R` file that will be executed during build,
-and can be used to install libraries.
-
-Both [RStudio](https://www.rstudio.com/) and [IRKernel](https://irkernel.github.io/)
-are installed by default, so you can use either the Jupyter notebook interface or
-the RStudio interface.
-
-This repository also contains an example of a Shiny app.
-
-Last, note that if your Binder URL points to a folder, as in 
-
-http://mybinder.org/v2/gh/binder-examples/r/master?urlpath=shiny/bus-dashboard/,
-
-you will need (1) to put in the final slash in the URL, and (2) to avoid converted 
-spaces-'%20'-in the URL, instead placing a hyphen.
+* Generally, it will be faster if you can run your code on your local computer. Running on binder is useful for ensuring that you are using the proper R/package versions. 
